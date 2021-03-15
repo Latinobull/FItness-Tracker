@@ -1,6 +1,4 @@
 const express = require('express');
-const htmlRouter = require('./routes/html-routes');
-const apiRouter = require('./routes/api-routes');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 
@@ -20,7 +18,7 @@ mongoose.connect(
     useFindAndModify: false,
   }
 );
-htmlRouter(app);
+app.use(require('./routes/html-routes'));
 // apiRouter(app);
 app.listen(PORT, () => {
   console.log(`Running On Port ${PORT}`);
